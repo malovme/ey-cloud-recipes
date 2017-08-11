@@ -7,7 +7,8 @@ if node[:name] == 'resque'
   
   execute "install resque gem" do
     command "gem install resque redis redis-namespace yajl-ruby -r"
-    not_if { "gem list | grep resque" }
+    #not_if { "gem list | grep resque" }
+    not_if "gem list | grep resque"
   end
 
   case node[:ec2][:instance_type]
